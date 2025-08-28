@@ -112,8 +112,8 @@ def find_empty_coordinates_detailed(input_file, output_file, sheet_name='Sheet1'
 # Penggunaan utama
 if __name__ == "__main__":
     # Konfigurasi file
-    input_filename = "D:/1. Poltstat STIS/New folder/aw/4506.xlsx"
-    output_filename = "D:/1. Poltstat STIS/New folder/aw/4506_baris_koordinat_kosong.xlsx"
+    input_filename = "D:/1. Poltstat STIS/New folder/aw/4506_baris_koordinat_kosong.xlsx"
+    output_filename = "D:/1. Poltstat STIS/New folder/aw/4506_baris_koordinat_kosong_kosong.xlsx"
     sheet_name = "Sheet1"
     
     print("=== PENCARI BARIS DENGAN KOORDINAT KOSONG ===\n")

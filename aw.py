@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Baca file excel
-df = pd.read_excel("D:/1. Poltstat STIS/New folder/aw/4506.xlsx", sheet_name="Sheet1")
+df = pd.read_excel("D:/1. Poltstat STIS/New folder/aw/4506_baris_koordinat_kosong_kosong.xlsx", sheet_name="Sheet1")
 
 # Fungsi untuk membersihkan Latitude
 def fix_lat(value):
@@ -36,4 +36,4 @@ df["Latitude"] = df["Latitude"].apply(fix_lat)
 df["Longitude"] = df["Longitude"].apply(fix_lon)
 
 # Simpan hasil ke file baru
-df.to_excel("D:/1. Poltstat STIS/New folder/aw/4506_fixed.xlsx", index=False)
+df.to_excel("D:/1. Poltstat STIS/New folder/aw/4506_baris_koordinat_kosong_kosong_kosong.xlsx", index=False)
