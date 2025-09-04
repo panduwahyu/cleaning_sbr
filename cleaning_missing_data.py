@@ -3,7 +3,7 @@ import numpy as np
 
 def find_empty_coordinates(input_file, output_file, sheet_name='Sheet1'):
     """
-    Mencari baris dengan nilai kosong pada kolom Latitude dan/atau Longitude
+    Mencari baris dengan nilai kosong pada kolom latitude dan/atau longitude
     
     Parameters:
     input_file (str): Nama file Excel input
@@ -19,18 +19,18 @@ def find_empty_coordinates(input_file, output_file, sheet_name='Sheet1'):
         print(f"Total baris dalam data: {len(df)}")
         print(f"Kolom yang tersedia: {list(df.columns)}")
         
-        # Memeriksa apakah kolom Latitude dan Longitude ada
-        if 'Latitude' not in df.columns or 'Longitude' not in df.columns:
-            print("Error: Kolom 'Latitude' atau 'Longitude' tidak ditemukan!")
+        # Memeriksa apakah kolom latitude dan longitude ada
+        if 'latitude' not in df.columns or 'longitude' not in df.columns:
+            print("Error: Kolom 'latitude' atau 'longitude' tidak ditemukan!")
             print("Kolom yang tersedia:", list(df.columns))
             return
         
-        # Mencari baris dengan nilai kosong pada Latitude atau Longitude
+        # Mencari baris dengan nilai kosong pada latitude atau longitude
         # Nilai kosong bisa berupa NaN, None, atau string kosong
-        empty_lat = df['Latitude'].isna() | (df['Latitude'] == '') | (df['Latitude'] == ' ')
-        empty_lon = df['Longitude'].isna() | (df['Longitude'] == '') | (df['Longitude'] == ' ')
+        empty_lat = df['latitude'].isna() | (df['latitude'] == '') | (df['latitude'] == ' ')
+        empty_lon = df['longitude'].isna() | (df['longitude'] == '') | (df['longitude'] == ' ')
         
-        # Baris yang memiliki nilai kosong pada Latitude ATAU Longitude
+        # Baris yang memiliki nilai kosong pada latitude ATAU longitude
         empty_coordinates = empty_lat | empty_lon
         
         # Filter baris yang memiliki koordinat kosong
@@ -38,8 +38,8 @@ def find_empty_coordinates(input_file, output_file, sheet_name='Sheet1'):
         
         # Menampilkan hasil
         print(f"\nHasil pencarian:")
-        print(f"Baris dengan Latitude kosong: {empty_lat.sum()}")
-        print(f"Baris dengan Longitude kosong: {empty_lon.sum()}")
+        print(f"Baris dengan latitude kosong: {empty_lat.sum()}")
+        print(f"Baris dengan longitude kosong: {empty_lon.sum()}")
         print(f"Total baris dengan koordinat kosong: {len(empty_rows)}")
         
         if len(empty_rows) > 0:
@@ -49,7 +49,7 @@ def find_empty_coordinates(input_file, output_file, sheet_name='Sheet1'):
             
             # Menampilkan preview beberapa baris pertama
             print("\nPreview data yang ditemukan:")
-            print(empty_rows[['Latitude', 'Longitude']].head(10))
+            print(empty_rows[['latitude', 'longitude']].head(10))
             
         else:
             print("\nTidak ditemukan baris dengan koordinat kosong!")
@@ -71,18 +71,18 @@ def find_empty_coordinates_detailed(input_file, output_file, sheet_name='Sheet1'
         print(f"Membaca file: {input_file}")
         df = pd.read_excel(input_file, sheet_name=sheet_name)
         
-        if 'Latitude' not in df.columns or 'Longitude' not in df.columns:
-            print("Error: Kolom 'Latitude' atau 'Longitude' tidak ditemukan!")
+        if 'latitude' not in df.columns or 'longitude' not in df.columns:
+            print("Error: Kolom 'latitude' atau 'longitude' tidak ditemukan!")
             return
         
         # Membuat kondisi untuk berbagai jenis nilai kosong
         conditions = {
-            'lat_nan': df['Latitude'].isna(),
-            'lon_nan': df['Longitude'].isna(),
-            'lat_empty_string': df['Latitude'] == '',
-            'lon_empty_string': df['Longitude'] == '',
-            'lat_whitespace': df['Latitude'].astype(str).str.strip() == '',
-            'lon_whitespace': df['Longitude'].astype(str).str.strip() == ''
+            'lat_nan': df['latitude'].isna(),
+            'lon_nan': df['longitude'].isna(),
+            'lat_empty_string': df['latitude'] == '',
+            'lon_empty_string': df['longitude'] == '',
+            'lat_whitespace': df['latitude'].astype(str).str.strip() == '',
+            'lon_whitespace': df['longitude'].astype(str).str.strip() == ''
         }
         
         # Kombinasi semua kondisi kosong
@@ -112,8 +112,8 @@ def find_empty_coordinates_detailed(input_file, output_file, sheet_name='Sheet1'
 # Penggunaan utama
 if __name__ == "__main__":
     # Konfigurasi file
-    input_filename = "D:/1. Poltstat STIS/New folder/aw/4506_baris_koordinat_kosong.xlsx"
-    output_filename = "D:/1. Poltstat STIS/New folder/aw/4506_baris_koordinat_kosong_kosong.xlsx"
+    input_filename = "Scraping Usaha Gede_updated.xlsx"
+    output_filename = "Scraping Usaha Gede_updated_kosong.xlsx"
     sheet_name = "Sheet1"
     
     print("=== PENCARI BARIS DENGAN KOORDINAT KOSONG ===\n")
